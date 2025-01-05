@@ -11,7 +11,7 @@
     <groupId>com.audit</groupId>
     <artifactId>AuditTrack</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Pdf-Reader</name>
+    <name>AuditTracker</name>
     <url/>
     <licenses>
         <license/>
@@ -72,6 +72,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>${project.name}</finalName>
     </build>
     <repositories>
         <repository>
