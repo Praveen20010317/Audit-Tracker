@@ -1,17 +1,13 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk-slim
+FROM maven:3.9.9-eclipse-temurin-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Set the working directory in the container
-WORKDIR /app
+FROM eclipse-temurin:17-alpine
+COPY --from=build/target/*.jar AuditTracker.jar
 
-# Copy the 'AuditTracker.jar' from the local 'target' directory to the '/app' directory in the container
-COPY target/AuditTracker.jar /app/AuditTracker.jar
-
-# Expose the port that the app will use (Render uses 10000 by default)
-EXPOSE 10000
-
-# Set the environment variable for the port
-ENV PORT=10000
+EXPOSE 8080
 
 # Run the 'AuditTracker.jar' file
-ENTRYPOINT ["java", "-jar", "/app/AuditTracker.jar"]
+ENTRYPOINT ["java", "-jar", "AuditTracker.jar"]
+
