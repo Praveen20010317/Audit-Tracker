@@ -63,7 +63,8 @@ public class SecurityConfig {
             CorsConfiguration config = new CorsConfiguration();
             config.setAllowedHeaders(Collections.singletonList("*"));
             config.setAllowedMethods(Collections.singletonList("*"));
-            config.addAllowedOrigin("http://localhost:3000");
+//            config.addAllowedOrigin("http://localhost:3000");
+            config.addAllowedOrigin("https://audit-tracker.netlify.app");
             config.setAllowCredentials(true);
             return config;
         });
